@@ -9,7 +9,7 @@ public class WastePaperMove : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject.GetComponent<GameManager>());
+       gameObject.GetComponent<WastePaperMove>();
 
         transform.DOMove(Vector2.zero, speed).OnComplete(() =>
         {
@@ -23,13 +23,15 @@ public class WastePaperMove : MonoBehaviour
         isJudgment = true;
         if (collision.CompareTag("Judgment"))
         {
+            transform.DOKill();
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
             ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
         }
         if (collision.CompareTag("NoJudgment"))
         {
-            //GameManager.Instance.Dead();
+            transform.DOKill();
+            GameManager.Instance.Dead();
             ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
         }
         isJudgment = false;

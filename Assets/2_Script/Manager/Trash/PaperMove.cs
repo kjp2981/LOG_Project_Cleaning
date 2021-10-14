@@ -47,13 +47,13 @@ public class PaperMove : MonoBehaviour
             transform.DOKill();
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
+            ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
         }
         if (collision.CompareTag("NoJudgment"))
         {
             transform.DOKill();
-            //GameManager.Instance.Dead();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
+            GameManager.Instance.Dead();
+            ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
         }
         isJudgment = false;
     }
