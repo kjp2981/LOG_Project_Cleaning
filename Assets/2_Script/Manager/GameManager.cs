@@ -14,27 +14,25 @@ public class GameManager : MonoSingleton<GameManager>
     private float delay = 0;
     [SerializeField]
     private Text highScoreTexture = null;
-
-    private float time = 0;
-    private int life = 3;
-    public bool gameOver = false;
-    [SerializeField]
-    private Sprite[] trashImage;
     [SerializeField]
     private Sprite[] lifeImage;
     [SerializeField]
     private GameObject[] scenes = null;
 
-    private UiManager uiManager;
-    public UiManager Ui { get { return uiManager; } }
-    
+    private float time = 0;
+    private int life = 3;
     private int score;
     private int highScore = 0;
-    public int Score { get { return score; } }
 
+    public int Score { get { return score; } }
+    private UiManager uiManager;
+    public UiManager Ui { get { return uiManager; } }
     private ButtonManager buttonManager = null;
+
+    public bool gameOver = false;
     void Start()
     {
+        Application.targetFrameRate = 60;
         uiManager = FindObjectOfType<UiManager>();
         buttonManager = GetComponent<ButtonManager>();
         MaxPosition = new Vector2(4f, 6f);
@@ -50,6 +48,9 @@ public class GameManager : MonoSingleton<GameManager>
     public void GameStart()
     {
         life = 3;
+        time = 0;
+        score = 0;
+        Ui.UpdateUi();
         ChangeLifeImage();
         StartCoroutine(TrashSpawn());
     }
@@ -181,7 +182,22 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void DelayMinus()
     {
-        //if(delay <= )
+        if (time == 0)
+            delay = 5;
+        else if (time > 0 && time < 11)
+            delay = 4.5f;
+        else if (time >= 11 && time < 21)
+            delay = 4;
+        else if (time >= 21 && time < 31)
+            delay = 3.5f;
+        else if (time >= 31 && time < 41)
+            delay = 2.5f;
+        else if (time >= 41 && time < 51)
+            delay = 2;
+        else if (time >= 51 && time < 61)
+            delay = 1.5f;
+        else
+            delay = 1;
     }
 
     public void Dead()

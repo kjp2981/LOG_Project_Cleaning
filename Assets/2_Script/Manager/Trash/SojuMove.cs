@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class SojuMove : MonoBehaviour
 {
-    private float speed = 1.5f;
+    private float speed = .5f;
 
     private Transform targetPosition = null;
 

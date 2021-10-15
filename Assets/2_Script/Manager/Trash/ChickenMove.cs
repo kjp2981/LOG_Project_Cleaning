@@ -11,9 +11,7 @@ public class ChickenMove : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject.GetComponent<GameManager>());
-
-        transform.DOMove(Vector2.zero, speed).OnComplete(() =>
+        transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             ObjectPool.Instance.ReturnObject(PoolObjectType.Chicken, gameObject);
         });

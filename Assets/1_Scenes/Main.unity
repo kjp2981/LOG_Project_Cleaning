@@ -2171,15 +2171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeObject: {fileID: 635573919}
-  delay: 0.5
+  delay: 5
   highScoreTexture: {fileID: 35532817}
-  gameOver: 0
-  trashImage:
-  - {fileID: -2563043597928945043, guid: f68280fa4909c884ea0a033c0eee07c3, type: 3}
-  - {fileID: 3935541441403996243, guid: f68280fa4909c884ea0a033c0eee07c3, type: 3}
-  - {fileID: -1079982859428050868, guid: f68280fa4909c884ea0a033c0eee07c3, type: 3}
-  - {fileID: 9140510045736159192, guid: f68280fa4909c884ea0a033c0eee07c3, type: 3}
-  - {fileID: -6830645446617907399, guid: f68280fa4909c884ea0a033c0eee07c3, type: 3}
   lifeImage:
   - {fileID: -3359916698839239071, guid: ebccffed140c05741b40993244d2f39d, type: 3}
   - {fileID: -3930883525495038881, guid: ebccffed140c05741b40993244d2f39d, type: 3}
@@ -2189,6 +2182,7 @@ MonoBehaviour:
   - {fileID: 217887278}
   - {fileID: 912533622}
   - {fileID: 2134740828}
+  gameOver: 0
 --- !u!4 &1776745778
 Transform:
   m_ObjectHideFlags: 0

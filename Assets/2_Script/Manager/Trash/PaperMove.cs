@@ -13,8 +13,6 @@ public class PaperMove : MonoBehaviour
 
     void Start()
     {
-        targetPosition = FindObjectOfType<RBMove>().transform;
-
         SetRotation();
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
