@@ -17,8 +17,12 @@ public class SojuMove : MonoBehaviour
 
         transform.DOMove(new Vector2(transform.position.x * .5f, transform.position.y * .5f), speed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            transform.position = Vector3.Slerp(transform.position, Vector3.zero, 1f);
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Soju, gameObject);
+            //transform.position = Vector3.Slerp(transform.position, Vector3.zero, 1f);
+            transform.DOMoveX(Vector3.zero.x, .5f).SetEase(Ease.OutQuad);
+            transform.DOMoveY(Vector3.zero.y, .5f).SetEase(Ease.InQuad).OnComplete(() =>
+            {
+                ObjectPool.Instance.ReturnObject(PoolObjectType.Soju, gameObject);
+            });
         });
     }
 
