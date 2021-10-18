@@ -11,10 +11,13 @@ public class SojuMove : MonoBehaviour
 
     private bool isJudgment = false;
 
-    void Start()
+    private void Start()
     {
         targetPosition = FindObjectOfType<RBMove>().transform;
+    }
 
+    private void OnEnable()
+    {
         transform.DOMove(new Vector2(transform.position.x * .5f, transform.position.y * .5f), speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             //transform.position = Vector3.Slerp(transform.position, Vector3.zero, 1f);

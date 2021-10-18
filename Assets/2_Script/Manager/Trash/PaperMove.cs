@@ -11,9 +11,17 @@ public class PaperMove : MonoBehaviour
 
     private bool isJudgment = false;
 
-    void Start()
+    private void Start()
+    {
+        targetPosition = GameObject.Find("RecycleBin").transform;
+    }
+
+    private void Update()
     {
         SetRotation();
+    }
+    private void OnEnable()
+    {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
@@ -22,18 +30,15 @@ public class PaperMove : MonoBehaviour
 
     private void SetRotation()
     {
-        if (targetPosition != null)
-        {
-            Vector2 direction = new Vector2(
-                transform.position.x - targetPosition.position.x,
-                transform.position.y - targetPosition.position.y
-            );
+        Vector2 direction = new Vector2(
+        transform.position.x - targetPosition.position.x,
+        transform.position.y - targetPosition.position.y
+        );
 
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion angleAxis = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
-            //Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, speed * Time.deltaTime);
-            transform.rotation = angleAxis;
-        }
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion angleAxis = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+        //Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, speed * Time.deltaTime);
+        transform.rotation = angleAxis;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

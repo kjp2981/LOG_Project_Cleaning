@@ -9,7 +9,7 @@ public class ChickenMove : MonoBehaviour
 
     private bool isJudgment = false;
 
-    void Start()
+    private void OnEnable()
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {

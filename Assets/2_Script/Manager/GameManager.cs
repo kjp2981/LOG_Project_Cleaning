@@ -43,7 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
     void Update()
     {
         time += Time.deltaTime;
-        DelayMinus();
+        //DelayMinus();
     }
     public void GameStart()
     {

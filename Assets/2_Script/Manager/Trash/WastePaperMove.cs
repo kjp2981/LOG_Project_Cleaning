@@ -7,17 +7,12 @@ public class WastePaperMove : MonoBehaviour
 
     private bool isJudgment = false;
 
-    void Start()
+    private void OnEnable()
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
         });
-    }
-
-    private void OnEnable()
-    {
-        this.gameObject.GetComponent<WastePaperMove>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

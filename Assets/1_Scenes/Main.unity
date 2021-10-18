@@ -238,7 +238,7 @@ MonoBehaviour:
     - {fileID: 5251925887322120344, guid: ced3540628772e44fbb6542693f14bb2, type: 3}
     - {fileID: 5251925887322120344, guid: d3bba06aac4e87348a7ffa3268c2ffee, type: 3}
     - {fileID: 5251925887322120344, guid: d58febdbf8257f6489e17fccd9a88740, type: 3}
-    prefabCreateCounts: 3200000032000000320000003200000032000000
+    prefabCreateCounts: 0a0000000a0000000a0000000a0000000a000000
 --- !u!4 &123453279
 Transform:
   m_ObjectHideFlags: 0
@@ -2021,7 +2021,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628547067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1776745780}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1628547067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeObject: {fileID: 635573919}
-  delay: 5
+  delay: 1
   highScoreTexture: {fileID: 35532817}
   lifeImage:
   - {fileID: -3359916698839239071, guid: ebccffed140c05741b40993244d2f39d, type: 3}
