@@ -5,16 +5,9 @@ using DG.Tweening;
 
 public class SojuMove : MonoBehaviour
 {
-    private float speed = .5f;
-
-    private Transform targetPosition = null;
+    private float speed = .75f;
 
     private bool isJudgment = false;
-
-    private void Start()
-    {
-        targetPosition = FindObjectOfType<RBMove>().transform;
-    }
 
     private void OnEnable()
     {
