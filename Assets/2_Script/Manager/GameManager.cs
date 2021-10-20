@@ -44,7 +44,7 @@ public class GameManager : MonoSingleton<GameManager>
     void Update()
     {
         time += Time.deltaTime;
-        //DelayMinus();
+        DelayMinus();
     }
     public void GameStart()
     {
@@ -113,7 +113,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         else if(time < 20)
         {
-            if (random < 80)
+            if (random < 60)
             {
                 return ObjectPool.Instance.GetObject(PoolObjectType.WastePaper);
             }
