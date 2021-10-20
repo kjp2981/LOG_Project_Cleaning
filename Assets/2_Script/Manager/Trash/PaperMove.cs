@@ -7,21 +7,15 @@ public class PaperMove : MonoBehaviour
 {
     private float speed = 1.5f;
 
-    private Transform targetPosition = null;
-
     private bool isJudgment = false;
-
-    private void Start()
-    {
-        targetPosition = GameObject.Find("RecycleBin").transform;
-    }
 
     private void Update()
     {
-        SetRotation();
+        //SetRotation();
     }
     private void OnEnable()
     {
+        transform.DOShakePosition(1, new Vector3(1, 1, 0), 1, 90);
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
@@ -31,8 +25,8 @@ public class PaperMove : MonoBehaviour
     private void SetRotation()
     {
         Vector2 direction = new Vector2(
-        transform.position.x - targetPosition.position.x,
-        transform.position.y - targetPosition.position.y
+        transform.position.x - Vector2.zero.x,
+        transform.position.y - Vector2.zero.y
         );
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

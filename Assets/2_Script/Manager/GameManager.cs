@@ -44,7 +44,7 @@ public class GameManager : MonoSingleton<GameManager>
     void Update()
     {
         time += Time.deltaTime;
-        DelayMinus();
+        //DelayMinus();
     }
     public void GameStart()
     {
@@ -64,12 +64,12 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 yield break;
             }
-            int randomSpawn = Random.Range(1, 5);
+            int randomSpqwnPosition = Random.Range(1, 5);
             float RandomX = Random.Range(MaxPosition.x, MinPosition.x);
             float RandomY = Random.Range(MaxPosition.y, MinPosition.y);
 
             GameObject newTrash = null;
-            switch (randomSpawn)
+            switch (randomSpqwnPosition)
             {
                 case 1:
                     newTrash = ChangeTrash(); // À­ÂÊ
