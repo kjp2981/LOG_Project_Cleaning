@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -13,7 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     private float delay = 0;
     [SerializeField]
-    private Text highScoreTexture = null;
+    private Text ScoreText = null;
     [SerializeField]
     private Sprite[] lifeImage;
     [SerializeField]
@@ -209,7 +210,7 @@ public class GameManager : MonoSingleton<GameManager>
             gameOver = true;
             scenes[2].SetActive(true);
             scenes[1].SetActive(false);
-            highScoreTexture.text = string.Format("{0}", PlayerPrefs.GetInt("HIGHSCORE"));
+            ScoreText.text = string.Format("{0}", score);
         }
     }
     public void ChangeLifeImage()

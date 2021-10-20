@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 35532818}
   - component: {fileID: 35532817}
   m_Layer: 5
-  m_Name: High Score
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,10 +190,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 123546
+  m_Text: 1235467
 --- !u!222 &35532818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 123453279}
   - component: {fileID: 123453278}
   m_Layer: 0
-  m_Name: ObjectPool
+  m_Name: PoolObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeObject: {fileID: 635573919}
   delay: 1
-  highScoreTexture: {fileID: 35532817}
+  ScoreText: {fileID: 35532817}
   lifeImage:
   - {fileID: -3359916698839239071, guid: ebccffed140c05741b40993244d2f39d, type: 3}
   - {fileID: -3930883525495038881, guid: ebccffed140c05741b40993244d2f39d, type: 3}

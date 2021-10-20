@@ -16,6 +16,7 @@ public class ButtonManager : MonoBehaviour
 
     public void MenuScene()
     {
+        GameManager.Instance.gameOver = false;
         scenes[0].SetActive(true);
         scenes[1].SetActive(false);
         scenes[2].SetActive(false);
