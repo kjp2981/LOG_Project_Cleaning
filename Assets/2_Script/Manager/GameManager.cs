@@ -22,7 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private float time = 0;
     private int life = 3;
-    private int score;
+    private int score = 0;
     private int highScore = 0;
 
     public int Score { get { return score; } }
@@ -39,6 +39,7 @@ public class GameManager : MonoSingleton<GameManager>
         MaxPosition = new Vector2(4f, 6f);
         MinPosition = new Vector2(-4f, -6f);
         buttonManager.MenuScene();
+        life = 3;
     }
 
     void Update()
@@ -210,7 +211,7 @@ public class GameManager : MonoSingleton<GameManager>
             gameOver = true;
             scenes[2].SetActive(true);
             scenes[1].SetActive(false);
-            ScoreText.text = string.Format("{0}", score);
+            ScoreText.text = score.ToString();
         }
     }
     public void ChangeLifeImage()

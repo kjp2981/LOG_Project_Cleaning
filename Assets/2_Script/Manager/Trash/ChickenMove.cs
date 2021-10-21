@@ -13,7 +13,7 @@ public class ChickenMove : MonoBehaviour
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Chicken, gameObject);
+            Pool();
         });
     }
 
@@ -25,13 +25,18 @@ public class ChickenMove : MonoBehaviour
         {
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Chicken, gameObject);
+            Pool();
         }
         if (collision.CompareTag("NoJudgment"))
         {
             GameManager.Instance.Dead();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Chicken, gameObject);
+            Pool();
         }
         isJudgment = false;
+    }
+
+    private void Pool()
+    {
+        ObjectPool.Instance.ReturnObject(PoolObjectType.Chicken, gameObject);
     }
 }

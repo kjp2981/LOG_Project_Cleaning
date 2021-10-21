@@ -13,7 +13,7 @@ public class AppleMove : MonoBehaviour
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Apple, gameObject);
+            Pool();
         });
     }
 
@@ -25,13 +25,18 @@ public class AppleMove : MonoBehaviour
         {
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Apple, gameObject);
+            Pool();
         }
         if (collision.CompareTag("NoJudgment"))
         {
             GameManager.Instance.Dead();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Apple, gameObject);
+            Pool();
         }
         isJudgment = false;
+    }
+
+    private void Pool()
+    {
+        ObjectPool.Instance.ReturnObject(PoolObjectType.Apple, gameObject);
     }
 }

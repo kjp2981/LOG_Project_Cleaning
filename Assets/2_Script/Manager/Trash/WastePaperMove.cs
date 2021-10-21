@@ -11,7 +11,7 @@ public class WastePaperMove : MonoBehaviour
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
-            ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
+            Pool();
         });
     }
 
@@ -24,14 +24,19 @@ public class WastePaperMove : MonoBehaviour
             transform.DOKill();
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
+            Pool();
         }
         if (collision.CompareTag("NoJudgment"))
         {
             transform.DOKill();
             GameManager.Instance.Dead();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
+            Pool();
         }
         isJudgment = false;
+    }
+
+    private void Pool()
+    {
+        ObjectPool.Instance.ReturnObject(PoolObjectType.WastePaper, gameObject);
     }
 }

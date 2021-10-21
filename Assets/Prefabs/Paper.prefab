@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4268247970193503678}
   - component: {fileID: 7956834119212568372}
   - component: {fileID: 4263775624023045259}
-  - component: {fileID: 2388339486213763662}
+  - component: {fileID: 3566718170607187402}
   m_Layer: 0
   m_Name: Paper
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7532a3ad16ebc024fb9e246d6674147a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2388339486213763662
+--- !u!95 &3566718170607187402
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

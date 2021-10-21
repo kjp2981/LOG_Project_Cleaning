@@ -10,6 +10,6 @@ public class UiManager : MonoBehaviour
 
     public void UpdateUi()
     {
-        scoreText.text = string.Format("{0}", GameManager.Instance.Score);
+        scoreText.text = GameManager.Instance.Score.ToString();
     }
 }

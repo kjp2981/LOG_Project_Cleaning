@@ -7,19 +7,34 @@ public class PaperMove : MonoBehaviour
 {
     private float speed = 1.5f;
 
+    private Rigidbody2D rb = null;
+
     private bool isJudgment = false;
+
+    private Animator animator = null;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        //SetRotation();
+        SetRotation();
     }
     private void OnEnable()
     {
-        transform.DOShakePosition(1, new Vector3(1, 1, 0), 1, 90);
-        transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
+        Sequence seq = DOTween.Sequence();
+        //seq.Append(transform.DOShakePosition(3, new Vector3(0, 0, 30), 0, 90)).SetEase(Ease.Linear);
+        seq.Append(transform.DOLocalMoveX(.5f, .8f).SetRelative().OnComplete(() =>
         {
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
-        });
+            transform.DOLocalMoveX(-1f, .8f).SetRelative();
+        }).SetLoops(-1, LoopType.Restart));
+        seq.Append(transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() => {
+            Pool();
+        }));
+
+        seq.Play();
     }
 
     private void SetRotation()
@@ -44,14 +59,20 @@ public class PaperMove : MonoBehaviour
             transform.DOKill();
             GameManager.Instance.AddScore(10);
             GameManager.Instance.Ui.UpdateUi();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
+            Pool();
         }
         if (collision.CompareTag("NoJudgment"))
         {
             transform.DOKill();
             GameManager.Instance.Dead();
-            ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
+            Pool();
         }
         isJudgment = false;
+    }
+
+    private void Pool()
+    {
+        ObjectPool.Instance.ReturnObject(PoolObjectType.Paper, gameObject);
+
     }
 }
