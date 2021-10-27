@@ -17,17 +17,23 @@ public class GameManager : MonoSingleton<GameManager>
     private Sprite[] lifeImage;
     [SerializeField]
     private GameObject[] scenes = null;
+    [SerializeField]
+    private AudioClip[] audioClips = null;
 
     private float time = 0;
     private int life = 3;
     private int score = 0;
     private int highScore = 0;
+    public int index = 0;
 
     public int Score { get { return score; } }
     public float delay = 0;
     private UiManager uiManager;
     public UiManager Ui { get { return uiManager; } }
     private ButtonManager buttonManager = null;
+    public BackgroundMusic backgroundMusic = null;
+
+    private AudioSource audioSource = null;
 
     public bool gameOver = false;
     void Start()
@@ -35,6 +41,8 @@ public class GameManager : MonoSingleton<GameManager>
         Application.targetFrameRate = 60;
         uiManager = FindObjectOfType<UiManager>();
         buttonManager = GetComponent<ButtonManager>();
+        backgroundMusic = FindObjectOfType<BackgroundMusic>();
+        audioSource = GetComponent<AudioSource>();
         MaxPosition = new Vector2(4f, 6f);
         MinPosition = new Vector2(-4f, -6f);
         buttonManager.MenuScene();
@@ -52,6 +60,8 @@ public class GameManager : MonoSingleton<GameManager>
         time = 0;
         score = 0;
         delay = 1;
+        index = 2;
+        backgroundMusic.AudioChange();
         Ui.UpdateUi();
         ChangeLifeImage();
         StartCoroutine(TrashSpawn());
@@ -91,6 +101,7 @@ public class GameManager : MonoSingleton<GameManager>
                 default:
                     break;
             }
+            AudioChange(0);
             InfiniteLoopDetector.Run();
             yield return new WaitForSeconds(delay);
             if (delay == 0) delay = 1;
@@ -99,6 +110,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void AddScore(int addScore)
     {
         score += addScore;
+        AudioChange(1);
         if(highScore < score)
         {
             highScore = score;
@@ -206,10 +218,13 @@ public class GameManager : MonoSingleton<GameManager>
     public void Dead()
     {
         life--;
+        AudioChange(2);
         ChangeLifeImage();
         if (life <= 0)
         {
             gameOver = true;
+            index = 3;
+            backgroundMusic.AudioChange();
             scenes[2].SetActive(true);
             scenes[1].SetActive(false);
             ScoreText.text = score.ToString();
@@ -233,5 +248,12 @@ public class GameManager : MonoSingleton<GameManager>
         {
             lifeObject.GetComponent<Image>().sprite = lifeImage[3];
         }
+    }
+
+
+    void AudioChange(int index)
+    {
+        audioSource.clip = audioClips[index];
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }

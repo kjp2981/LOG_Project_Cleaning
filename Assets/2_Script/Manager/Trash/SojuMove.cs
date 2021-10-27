@@ -11,13 +11,10 @@ public class SojuMove : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.DOMove(new Vector2(transform.position.x * .5f, transform.position.y * .5f), speed).OnComplete(() =>
+        transform.DOMoveX(Vector3.zero.x, speed).SetEase(Ease.OutSine);
+        transform.DOMoveY(Vector3.zero.y, speed).SetEase(Ease.InSine).OnComplete(() =>
         {
-            transform.DOMoveX(Vector2.zero.x, .5f).SetEase(Ease.OutQuad);
-            transform.DOMoveY(Vector2.zero.y, .5f).SetEase(Ease.InQuad).OnComplete(() =>
-            {
-                Pool();
-            });
+            Pool();
         });
     }
 

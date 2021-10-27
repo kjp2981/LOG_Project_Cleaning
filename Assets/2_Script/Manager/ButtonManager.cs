@@ -31,6 +31,8 @@ public class ButtonManager : MonoBehaviour
     public void MenuScene()
     {
         GameManager.Instance.gameOver = false;
+        GameManager.Instance.index = 1;
+        GameManager.Instance.backgroundMusic.AudioChange();
         scenes[0].SetActive(true);
         scenes[1].SetActive(false);
         scenes[2].SetActive(false);
