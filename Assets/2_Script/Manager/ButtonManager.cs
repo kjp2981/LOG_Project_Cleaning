@@ -6,6 +6,20 @@ public class ButtonManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] scenes = null;
+    [SerializeField]
+    private GameObject Setting;
+
+    private bool isOpenSetting = false;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isOpenSetting)
+                CloseSetting();
+            else
+                OpenSetting();
+        }
+    }
     public void StartScene()
     {
         scenes[0].SetActive(false);
@@ -24,7 +38,15 @@ public class ButtonManager : MonoBehaviour
     
     public void OpenSetting()
     {
-
+        Setting.SetActive(true);
+        isOpenSetting = true;
+        Time.timeScale = 0;
+    }
+    public void CloseSetting()
+    {
+        Setting.SetActive(false);
+        isOpenSetting = false;
+        Time.timeScale = 1;
     }
 
     public void Quit()
