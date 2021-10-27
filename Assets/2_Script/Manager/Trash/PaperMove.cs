@@ -24,17 +24,9 @@ public class PaperMove : MonoBehaviour
     }
     private void OnEnable()
     {
-        Sequence seq = DOTween.Sequence();
-        //seq.Append(transform.DOShakePosition(3, new Vector3(0, 0, 30), 0, 90)).SetEase(Ease.Linear);
-        seq.Append(transform.DOLocalMoveX(.5f, .8f).SetRelative().OnComplete(() =>
-        {
-            transform.DOLocalMoveX(-1f, .8f).SetRelative();
-        }).SetLoops(-1, LoopType.Restart));
-        seq.Append(transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() => {
+        transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() => {
             Pool();
-        }));
-
-        seq.Play();
+        });
     }
 
     private void SetRotation()
