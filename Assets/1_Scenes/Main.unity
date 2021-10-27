@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &217887279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2183,7 +2183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeObject: {fileID: 635573919}
-  delay: 1
   ScoreText: {fileID: 35532817}
   lifeImage:
   - {fileID: -3359916698839239071, guid: ebccffed140c05741b40993244d2f39d, type: 3}
@@ -2194,6 +2193,7 @@ MonoBehaviour:
   - {fileID: 217887278}
   - {fileID: 912533622}
   - {fileID: 2134740828}
+  delay: 1
   gameOver: 0
 --- !u!4 &1776745778
 Transform:
@@ -2523,7 +2523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134740829
 RectTransform:
   m_ObjectHideFlags: 0

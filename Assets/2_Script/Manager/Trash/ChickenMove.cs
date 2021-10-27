@@ -30,6 +30,7 @@ public class ChickenMove : MonoBehaviour
         if (collision.CompareTag("NoJudgment"))
         {
             GameManager.Instance.Dead();
+            GameManager.Instance.delay -= 1f;
             Pool();
         }
         isJudgment = false;

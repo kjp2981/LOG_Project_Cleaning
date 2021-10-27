@@ -12,8 +12,6 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField]
     private GameObject lifeObject = null;
     [SerializeField]
-    private float delay = 0;
-    [SerializeField]
     private Text ScoreText = null;
     [SerializeField]
     private Sprite[] lifeImage;
@@ -26,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
     private int highScore = 0;
 
     public int Score { get { return score; } }
+    public float delay = 0;
     private UiManager uiManager;
     public UiManager Ui { get { return uiManager; } }
     private ButtonManager buttonManager = null;
@@ -52,6 +51,7 @@ public class GameManager : MonoSingleton<GameManager>
         life = 3;
         time = 0;
         score = 0;
+        delay = 1;
         Ui.UpdateUi();
         ChangeLifeImage();
         StartCoroutine(TrashSpawn());
@@ -93,6 +93,7 @@ public class GameManager : MonoSingleton<GameManager>
             }
             InfiniteLoopDetector.Run();
             yield return new WaitForSeconds(delay);
+            if (delay == 0) delay = 1;
         }
     }
     public void AddScore(int addScore)
