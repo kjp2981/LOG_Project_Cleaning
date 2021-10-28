@@ -8,6 +8,11 @@ public class SojuMove : MonoBehaviour
     private float speed = 1.5f;
 
     private bool isJudgment = false;
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.gameOver)
+            Pool();
+    }
 
     private void OnEnable()
     {

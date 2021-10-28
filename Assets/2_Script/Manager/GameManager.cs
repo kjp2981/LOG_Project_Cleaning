@@ -61,6 +61,7 @@ public class GameManager : MonoSingleton<GameManager>
         score = 0;
         delay = 1;
         index = 2;
+        gameOver = false;
         backgroundMusic.AudioChange();
         Ui.UpdateUi();
         ChangeLifeImage();
@@ -222,13 +223,20 @@ public class GameManager : MonoSingleton<GameManager>
         ChangeLifeImage();
         if (life <= 0)
         {
-            gameOver = true;
-            index = 3;
-            backgroundMusic.AudioChange();
-            scenes[2].SetActive(true);
-            scenes[1].SetActive(false);
-            ScoreText.text = score.ToString();
+            GameOver();
         }
+    }
+    public void GameOver()
+    {
+        gameOver = true;
+        buttonManager.isGameStart = false;
+        life = 0;
+        index = 3;
+        StopCoroutine(TrashSpawn());
+        backgroundMusic.AudioChange();
+        scenes[2].SetActive(true);
+        scenes[1].SetActive(false);
+        ScoreText.text = score.ToString();
     }
     public void ChangeLifeImage()
     {

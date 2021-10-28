@@ -7,6 +7,12 @@ public class WastePaperMove : MonoBehaviour
 
     private bool isJudgment = false;
 
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.gameOver)
+            Pool();
+    }
+
     private void OnEnable()
     {
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>

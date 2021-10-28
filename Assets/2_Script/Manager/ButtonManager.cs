@@ -8,7 +8,13 @@ public class ButtonManager : MonoBehaviour
     private GameObject[] scenes = null;
     [SerializeField]
     private GameObject Setting;
+    [SerializeField]
+    private GameObject RestartButton;
+    [SerializeField]
+    private GameObject MenuButton;
 
+    public bool isGameStart = false;
+    public bool isOpenMenuSecen = true;
     private bool isOpenSetting = false;
     private void Update()
     {
@@ -22,6 +28,8 @@ public class ButtonManager : MonoBehaviour
     }
     public void StartScene()
     {
+        isGameStart = true;
+        isOpenMenuSecen = false;
         scenes[0].SetActive(false);
         scenes[1].SetActive(true);
         scenes[2].SetActive(false);
@@ -30,6 +38,8 @@ public class ButtonManager : MonoBehaviour
 
     public void MenuScene()
     {
+        isGameStart = false;
+        isOpenMenuSecen = true;
         GameManager.Instance.gameOver = false;
         GameManager.Instance.index = 1;
         GameManager.Instance.backgroundMusic.AudioChange();
@@ -40,6 +50,14 @@ public class ButtonManager : MonoBehaviour
     
     public void OpenSetting()
     {
+        if (isGameStart)
+            RestartButton.SetActive(true);
+        else
+            RestartButton.SetActive(false);
+        if (isOpenMenuSecen)
+            MenuButton.SetActive(false);
+        else
+            MenuButton.SetActive(true);
         Setting.SetActive(true);
         isOpenSetting = true;
         Time.timeScale = 0;
@@ -50,7 +68,17 @@ public class ButtonManager : MonoBehaviour
         isOpenSetting = false;
         Time.timeScale = 1;
     }
-
+    public void OnClickRestart()
+    {
+        CloseSetting();
+        GameManager.Instance.GameOver();
+    }
+    public void OnClickMenu()
+    {
+        CloseSetting();
+        GameManager.Instance.GameOver();
+        MenuScene();
+    }
     public void Quit()
     {
         Application.Quit();
