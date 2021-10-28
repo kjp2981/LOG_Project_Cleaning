@@ -39,6 +39,7 @@ public class GameManager : MonoSingleton<GameManager>
     void Start()
     {
         Application.targetFrameRate = 60;
+        Screen.SetResolution(1440, 2960, true);
         uiManager = FindObjectOfType<UiManager>();
         buttonManager = GetComponent<ButtonManager>();
         backgroundMusic = FindObjectOfType<BackgroundMusic>();
