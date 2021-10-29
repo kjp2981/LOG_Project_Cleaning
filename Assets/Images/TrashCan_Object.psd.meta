@@ -109,8 +109,8 @@ TextureImporter:
       name: TrashCan_Object_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 675
+        x: 130
+        y: 111
         width: 275
         height: 302
       alignment: 0
