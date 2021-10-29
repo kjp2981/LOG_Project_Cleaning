@@ -29,7 +29,7 @@ public class PaperMove : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() => {
+        transform.DOMove(Vector2.zero, speed).SetEase(Ease.InOutQuint).OnComplete(() => {
             Pool();
         });
     }
