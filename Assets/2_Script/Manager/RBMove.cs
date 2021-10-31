@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RBMove : MonoBehaviour
 {
-    private Camera camera = null;
+    private new Camera camera = null;
 
     private void Start()
     {

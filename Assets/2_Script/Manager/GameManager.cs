@@ -9,6 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public Vector2 MaxPosition { get; private set; }
     public Vector2 MinPosition { get; private set; }
 
+
     [SerializeField]
     private GameObject lifeObject = null;
     [SerializeField]
@@ -19,21 +20,21 @@ public class GameManager : MonoSingleton<GameManager>
     private GameObject[] scenes = null;
     [SerializeField]
     private AudioClip[] audioClips = null;
+    private UiManager uiManager;
+    public UiManager Ui { get { return uiManager; } }
+    private ButtonManager buttonManager = null;
+    public BackgroundMusic backgroundMusic = null;
+    private AudioSource audioSource = null;
+
 
     private float time = 0;
     private int life = 3;
     private int score = 0;
     private int highScore = 0;
     public int index = 0;
-
     public int Score { get { return score; } }
     public float delay = 0;
-    private UiManager uiManager;
-    public UiManager Ui { get { return uiManager; } }
-    private ButtonManager buttonManager = null;
-    public BackgroundMusic backgroundMusic = null;
 
-    private AudioSource audioSource = null;
 
     public bool gameOver = false;
     void Start()
@@ -47,7 +48,6 @@ public class GameManager : MonoSingleton<GameManager>
         MaxPosition = new Vector2(4f, 6f);
         MinPosition = new Vector2(-4f, -6f);
         buttonManager.MenuScene();
-        life = 3;
     }
 
     void Update()
@@ -57,7 +57,6 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void GameStart()
     {
-        life = 3;
         time = 0;
         score = 0;
         delay = 1;
@@ -67,6 +66,7 @@ public class GameManager : MonoSingleton<GameManager>
         Ui.UpdateUi();
         ChangeLifeImage();
         StartCoroutine(TrashSpawn());
+        life = 3;
     }
 
     private IEnumerator TrashSpawn()
