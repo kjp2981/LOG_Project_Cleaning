@@ -48,12 +48,15 @@ public class GameManager : MonoSingleton<GameManager>
         MaxPosition = new Vector2(4f, 6f);
         MinPosition = new Vector2(-4f, -6f);
         buttonManager.MenuScene();
+        if(PlayerPrefs.HasKey("HIGHSCORE"))
+        {
+            PlayerPrefs.SetInt("HIGHSCORE", 0);
+        }
     }
-
     void Update()
     {
         time += Time.deltaTime;
-        //DelayMinus();
+        DelayMinus();
     }
     public void GameStart()
     {
@@ -71,6 +74,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private IEnumerator TrashSpawn()
     {
+        yield return new WaitForSeconds(2f);
         while (true)
         {
             if (life <= 0)
@@ -106,7 +110,7 @@ public class GameManager : MonoSingleton<GameManager>
             AudioChange(0);
             InfiniteLoopDetector.Run();
             yield return new WaitForSeconds(delay);
-            if (delay == 0) delay = 1;
+            if (delay == 0) DelayMinus();
         }
     }
     public void AddScore(int addScore)
