@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
     private AudioSource audioSource = null;
 
 
-    private float time = 0;
+    internal float time = 0;
     private int life = 3;
     private int score = 0;
     private int highScore = 0;
@@ -62,14 +62,14 @@ public class GameManager : MonoSingleton<GameManager>
     {
         time = 0;
         score = 0;
-        delay = 1;
+        delay = 3;
         index = 2;
+        life = 3;
         gameOver = false;
         backgroundMusic.AudioChange();
         Ui.UpdateUi();
         ChangeLifeImage();
-        StartCoroutine(TrashSpawn());
-        life = 3;
+        StartCoroutine("TrashSpawn");
     }
 
     private IEnumerator TrashSpawn()
@@ -204,21 +204,21 @@ public class GameManager : MonoSingleton<GameManager>
     private void DelayMinus()
     {
         if (time == 0)
-            delay = 5;
+            delay = 3;
         else if (time > 0 && time < 11)
-            delay = 4.5f;
-        else if (time >= 11 && time < 21)
-            delay = 4;
-        else if (time >= 21 && time < 31)
             delay = 3.5f;
-        else if (time >= 31 && time < 41)
+        else if (time >= 11 && time < 21)
+            delay = 3;
+        else if (time >= 21 && time < 31)
             delay = 2.5f;
-        else if (time >= 41 && time < 51)
+        else if (time >= 31 && time < 41)
             delay = 2;
         else if (time >= 51 && time < 61)
             delay = 1.5f;
-        else
+        else if (time >= 61 && time < 71)
             delay = 1;
+        else
+            delay = .5f;
     }
 
     public void Dead()
@@ -237,7 +237,7 @@ public class GameManager : MonoSingleton<GameManager>
         buttonManager.isGameStart = false;
         life = 0;
         index = 3;
-        StopCoroutine(TrashSpawn());
+        StopCoroutine("TrashSpawn");
         backgroundMusic.AudioChange();
         scenes[2].SetActive(true);
         scenes[1].SetActive(false);

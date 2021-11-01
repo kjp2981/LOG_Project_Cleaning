@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class PaperMove : MonoBehaviour
 {
+    private const float iniSpeed = 1.5f;
     private float speed = 1.5f;
 
     private Rigidbody2D rb = null;
@@ -29,7 +30,10 @@ public class PaperMove : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.DOMove(Vector2.zero, speed * 1.3f).SetEase(Ease.InCirc).OnComplete(() => Pool());
+        speed = iniSpeed - (GameManager.Instance.time * .01f);
+        if (speed <= 0)
+            speed = .01f;
+        transform.DOMove(Vector2.zero, speed * 1.3f).SetEase(Ease.OutCirc).OnComplete(() => Pool());
     }
 
     private void SetRotation()
