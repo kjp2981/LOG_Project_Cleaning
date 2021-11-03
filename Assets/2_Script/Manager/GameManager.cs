@@ -60,16 +60,21 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void GameStart()
     {
-        time = 0;
-        score = 0;
-        delay = 3;
-        index = 2;
-        life = 3;
+        Reset();
         gameOver = false;
         backgroundMusic.AudioChange();
         Ui.UpdateUi();
         ChangeLifeImage();
         StartCoroutine("TrashSpawn");
+    }
+
+    public void Reset()
+    {
+        time = 0;
+        score = 0;
+        delay = 3;
+        index = 2;
+        life = 3;
     }
 
     private IEnumerator TrashSpawn()

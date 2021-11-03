@@ -71,7 +71,11 @@ public class ButtonManager : MonoBehaviour
     public void OnClickRestart()
     {
         CloseSetting();
-        GameManager.Instance.GameOver();
+        //GameManager.Instance.GameOver();
+        GameManager.Instance.Reset();
+        GameManager.Instance.Ui.UpdateUi();
+        GameManager.Instance.StopCoroutine("TrashSpawn");
+        GameManager.Instance.StartCoroutine("TrashSpawn");
     }
     public void OnClickMenu()
     {
