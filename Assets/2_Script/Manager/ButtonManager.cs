@@ -76,6 +76,7 @@ public class ButtonManager : MonoBehaviour
         GameManager.Instance.Ui.UpdateUi();
         GameManager.Instance.ChangeLifeImage();
         GameManager.Instance.StopCoroutine("TrashSpawn");
+        GameManager.Instance.gameOver = true;
         GameManager.Instance.StartCoroutine("TrashSpawn");
     }
     public void OnClickMenu()

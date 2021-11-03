@@ -10,7 +10,7 @@ public class ChickenMove : MonoBehaviour
 
     private bool isJudgment = false;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameManager.Instance.gameOver)
             Pool();

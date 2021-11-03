@@ -22,9 +22,6 @@ public class PaperMove : MonoBehaviour
     private void Update()
     {
         SetRotation();
-    }
-    private void FixedUpdate()
-    {
         if (GameManager.Instance.gameOver)
             Pool();
     }

@@ -37,6 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
     public bool gameOver = false;
+    public bool isReturn = false;
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -79,7 +80,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     private IEnumerator TrashSpawn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
+        gameOver = false;
+        yield return null;
         while (true)
         {
             if (life <= 0)

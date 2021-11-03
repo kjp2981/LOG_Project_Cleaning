@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3566718170607187402}
   m_Layer: 0
   m_Name: Paper
-  m_TagString: Judgment
+  m_TagString: TRASH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

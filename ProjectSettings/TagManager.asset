@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Judgment
   - NoJudgment
+  - TRASH
   layers:
   - Default
   - TransparentFX
