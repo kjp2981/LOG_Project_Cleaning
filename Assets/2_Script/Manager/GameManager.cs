@@ -120,8 +120,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public void AddScore(int addScore)
     {
-        score += addScore;
         AudioChange(1);
+        score += addScore;
         if(highScore < score)
         {
             highScore = score;
