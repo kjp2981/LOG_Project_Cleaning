@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class AppleMove : MonoBehaviour
 {
-    private const float iniSpeed = 1.5f;
     private float speed = 1.5f;
 
     private bool isJudgment = false;
@@ -18,9 +17,6 @@ public class AppleMove : MonoBehaviour
 
     private void OnEnable()
     {
-        speed = iniSpeed - (GameManager.Instance.time * .01f);
-        if (speed <= 0)
-            speed = .01f;
         transform.DOMove(Vector2.zero, speed).SetEase(Ease.Linear).OnComplete(() =>
         {
             Pool();
